@@ -19,4 +19,5 @@ http://algs4.cs.princeton.edu/44sp/
 Authors :
 
 Tamir Ohanon
-Edi Kisler
+
+Edward Kisller
