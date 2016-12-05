@@ -69,7 +69,7 @@ public class Graph_Algo {
 	// triangle inequality true or false
 			// c < a + b
 	
-	public static String statisticOutput(vertex vertexList[]){
+	public static String statisticOutput(Vertex vertexList[]){
 		boolean isTie = false;
 		double allMax[]=new double[vertexList.length];
 		int vertexs[]=new int[vertexList.length];
@@ -96,7 +96,7 @@ public class Graph_Algo {
 	 * @param vertexList
 	 * @return the result of the dijakstra as string
 	 */
-	public static String seperator(String s, vertex vertexList[] ){
+	public static String seperator(String s, Vertex vertexList[] ){
 		String [] arr=s.split(" ");
 		String result;
 		int firstV=Integer.parseInt(arr[0]);
@@ -125,10 +125,10 @@ public class Graph_Algo {
 	public static void main(String[] args) {
 		
 		long startTime = System.currentTimeMillis();
-		String address="/Users/User/Desktop/Julia01/G0.txt"; //here we add the address of the graph file
+		String address="/Users/edwardk/Downloads/Ex1/G0.txt"; //here we add the address of the graph file
 		Graph gph= new Graph(address);
-		vertex vertexList[]=gph.getListOfVertexes();
-		read_From_Querys rfq =new read_From_Querys("/Users/User/Desktop/Julia01/test1.txt"); //here we add the address of the test file
+		Vertex vertexList[]=gph.getListOfVertexes();
+		read_From_Querys rfq =new read_From_Querys("/Users/edwardk/Downloads/Ex1/test1.txt"); //here we add the address of the test file
 		Path currentRelativePath = Paths.get("");
 		String s = currentRelativePath.toAbsolutePath().toString();
 		System.out.println("creating a result file into "+s);

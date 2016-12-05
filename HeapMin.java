@@ -5,19 +5,19 @@ public class HeapMin {
 
 	double positiveInfinity = Double.POSITIVE_INFINITY;
 	final int InitSize = 10;
-	private vertex arr[];
+	private Vertex arr[];
 	private int Size;
 	
-	public HeapMin(vertex arr[]){
+	public HeapMin(Vertex arr[]){
 		Size = arr.length;
-		arr = new vertex[Size];
+		arr = new Vertex[Size];
 		for (int i=0; i<Size; i++){
 			arr[i]=arr[i];
 		}
 	}
 	
 	public HeapMin(){
-		arr = new vertex[0];
+		arr = new Vertex[0];
 	}
 	
 	/** return the size*/
@@ -28,7 +28,7 @@ public class HeapMin {
 	
 	/** returns the heap array */
 	
-	public vertex[] getA(){
+	public Vertex[] getA(){
 		return arr;
 		}
 	
@@ -53,7 +53,7 @@ public class HeapMin {
 	
 	/** return the first value */
 	
-	public vertex heapMinimum(){
+	public Vertex heapMinimum(){
 		return arr[0];
 		}
 	
@@ -87,11 +87,11 @@ public class HeapMin {
 	
 	/** the heap minimum element extraction */
 	
-	public vertex heapExtractMin(){
+	public Vertex heapExtractMin(){
 		double min = positiveInfinity; 
-		vertex v=null;
+		Vertex v=null;
 		if (!isEmpty()){
-			v=new vertex(arr[0]);
+			v=new Vertex(arr[0]);
 			min = v.getDist();
 			arr[0]=arr[Size-1];
 			Size = Size-1;
@@ -102,7 +102,7 @@ public class HeapMin {
 	
 	/** the heapDecreaseKey implements the Decrease Key operation*/
 	
-	public void heapDecreaseKey(vertex node){
+	public void heapDecreaseKey(Vertex node){
 		int v = node.getName();
 		int i = 0;
 		while (i<Size && v!=arr[i].getName()) i++;
@@ -117,9 +117,9 @@ public class HeapMin {
 	
 	/** minHeapInsert function implements the Insert-Key operation*/
 	
-	public void minHeapInsert(vertex node){
+	public void minHeapInsert(Vertex node){
 		resize(1);
-		arr[Size-1] = new vertex(node);
+		arr[Size-1] = new Vertex(node);
 		arr[Size-1].setDist(positiveInfinity);
 		heapDecreaseKey(node);
 	}
@@ -127,7 +127,7 @@ public class HeapMin {
 	/** increment an array*/
 	
 	private void resize(int increment){
-		vertex temp[] = new vertex[Size+increment];
+		Vertex temp[] = new Vertex[Size+increment];
 		for (int i=0; i<Size; i++){
 			temp[i]=arr[i];
 		}
@@ -138,7 +138,7 @@ public class HeapMin {
 	/** exchange two array elements*/
 	
 	private void exchange(int i, int j){
-		vertex t = arr[i];
+		Vertex t = arr[i];
 		arr[i] = arr[j];
 		arr[j] = t;
 	}

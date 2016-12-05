@@ -5,29 +5,29 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Dijkstra {
-	vertex[] vertices;
+	Vertex[] vertices;
 	int source;
 	int maxV;
 	double max;
 	boolean isOk;
 	
 	
-	public Dijkstra(vertex[] vs, int source){
+	public Dijkstra(Vertex[] vs, int source){
 		max=-1;
 		maxV=-1;
 		this.source = source;
-		vertices = new   vertex[vs.length];
+		vertices = new   Vertex[vs.length];
 		for (int i=0; i<vs.length; i++){
-			vertices[i] =new vertex(vs[i]) ;
+			vertices[i] =new Vertex(vs[i]) ;
 		}
 	}
 	
 	// in case that the dijakstra obj already exists
-	public void  init(vertex[] vs, int source){
+	public void  init(Vertex[] vs, int source){
 		this.source = source;
-		vertices = new   vertex[vs.length];
+		vertices = new   Vertex[vs.length];
 		for (int i=0; i<vs.length; i++){ 
-			vertices[i] =new vertex( vs[i]);
+			vertices[i] =new Vertex( vs[i]);
 			vertices[i].setCount(0);
 		}
 	}
@@ -38,7 +38,7 @@ public class Dijkstra {
 	public void computePaths(){
 		isOk=true;
 
-		vertex s = vertices[source];
+		Vertex s = vertices[source];
 		s.setDist(0);
 		HeapMin Q = new HeapMin();
 		Q.minHeapInsert(s);
@@ -48,11 +48,11 @@ public class Dijkstra {
 		
 		
 		while (!Q.isEmpty()) {
-			vertex u = Q.heapExtractMin();
+			Vertex u = Q.heapExtractMin();
 			// Visit each edge exiting u
 			
-			for (edge e : u.getEdges()){
-				vertex v = vertices[e.getVert()];
+			for (Edge e : u.getEdges()){
+				Vertex v = vertices[e.getVert()];
 				if (!v.isVisited()){
 					double distU = u.getDist() + e.getWeight();
 					if (distU < v.getDist()) {//relaxation
@@ -86,7 +86,7 @@ public class Dijkstra {
 	public void printWeights(){
 		//System.out.print("weights: ");
 		
-		for (vertex v : vertices) {
+		for (Vertex v : vertices) {
 			if(max<v.getDist()){
 				max=v.getDist();
 				maxV=v.getName();
@@ -139,7 +139,7 @@ public class Dijkstra {
 	 * @param vs
 	 * @return
 	 */
-	public String blacklist(int [] black_list,int source, int dest, vertex[] vs){
+	public String blacklist(int [] black_list,int source, int dest, Vertex[] vs){
 		//init(vs, source);
 		String arrayToString="";
 		for(int vert:black_list){
